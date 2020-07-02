@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Cập nhật thông tin
+    </title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/capnhatthongtin-style.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <% include header-dangnhap%>
+        <section>
+            <div class="section-form">
+                <form action="/capnhatthongtin/edit" method="POST" id="form-change" class="form-change">
+                    <div class="title-change">
+                        <h2><b>Cập nhật thông tin</b></h2>
+                    </div>
+
+                    <div class="fill-change">
+                        <!-- table img -->
+                        <div class="table-change-img">
+                            <table>
+                                <tbody>
+                                    <tr class="txt-table-r avatar-circle avatar-120 mx__auto">
+                                        <td class="txt-table-img">
+                                            <div class="preview">
+                                                <img class="img-change" id="thumb" src="/images/<%= nd.hinhDaiDien %>" alt="avatar">
+                                            </div>
+
+                                        </td>
+                                        <td class="change-table-img">
+                                            <div>
+                                                <label>Thay đổi ảnh đại diện của bạn</label>
+                                                <input type="file" id="pimg" name="pimg" class="avartar-edit-input" h-0 w-0 accept="image/*">
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- table Email -->
+                        <div class="table-change-1">
+                            <table>
+                                <tbody>
+                                    <tr class="txt-table-r">
+                                        <td class="txt-table">
+                                            <h4><b>Email</b></h4>
+                                        </td>
+                                        <td class="txt-table-c2">
+                                            <input type="text" class="txt-c2-all" id="email" name="pemail" value="<%= nd.email %>" readonly>
+                                        </td>
+                                        <td class="txt-table-c3">
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Table Tên người dùng  -->
+                        <div class="table-change-2" id="table-change-2">
+                            <table>
+                                <tbody>
+
+                                    <tr class="txt-table-r">
+                                        <td class="txt-table">
+                                            <h4><b>Tên người dùng</b></h4>
+                                        </td>
+                                        <td class="txt-table-c2">
+                                            <input type="text" class="txt-c2-all" id="txt-c2-name" name="pname" value="<%= nd.tenNguoiDung %>" pattern="^[a-z A-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{4,100}$"
+                                                title="Nhập tên hơn 2 từ trở lên" required>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                        <!-- Table Số điện thoại -->
+                        <div class="table-change-3" id="table-change-3">
+                            <table>
+                                <tbody>
+
+                                    <tr class="txt-table-r">
+                                        <td class="txt-table">
+                                            <h4><b>Số điện thoại</b></h4>
+                                        </td>
+                                        <td class="txt-table-c2">
+                                            <input type="text" class="txt-c2-all" id="txt-c2-phone" name="pphone" pattern="^[0]{1}[0-9]{9}$" title="Nhập số điện thoại 10 số bắt đầu từ số 0" required value="<%= nd.soDienThoai %>">
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="table-change-4" id="table-change-4">
+                            <table>
+                                <tbody>
+                                    <tr class="txt-table-r">
+                                        <td class="txt-table">
+                                            <h4><b>Đổi mật khẩu</b></h4>
+                                        </td>
+                                        <td class="txt-table-c2">
+                                            <input type="password" class="txt-c2-all" id="txt-c2-pass" name="profile_password" value="<%= nd.password %>" readonly>
+                                        </td>
+                                        <td class="txt-table-c3">
+                                            <button type="button" class="btn-change" id="btn-change-pass">Chỉnh sửa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <!-- Table hidden Đổi mật khẩu -->
+                        <div id="hidden-pass-4">
+                            <table>
+                                <tbody>
+
+                                    <tr class="txt-table-r">
+
+                                        <td class="txt-table-c2-pass">
+                                            <div class="pass-pass">
+                                                <h4>Mật khẩu mới</h4>
+                                                <input type="password" class="pass-txt-c2-hidden" id="password" value="<%= nd.password %>" placeholder="Nhập mật khẩu mới" pattern="^[a-zA-Z0-9\+]{8,16}$" title="Nhập từ 8 đến 16 ký tự" required>
+                                            </div>
+                                            <div class="pass-repass">
+                                                <h4>Nhập lại mật khẩu</h4>
+                                                <input type="password" name="hpass" class="pass-txt-c2-hidden" value="<%= nd.password %>" id="re_password" placeholder="Nhật lại mật khẩu mới" pattern="^[a-zA-Z0-9\+]{8,16}$" title="Nhập từ 8 đến 16 ký tự" required>
+                                            </div>
+                                            <div class="pass-btn-hidden">
+                                                <button type="submit" id="pass-btn-luu" class="btn-change">Lưu</button>
+                                                <button type="button" id="pass-btn-huy" class="btn-change">Hủy</button>
+                                            </div>
+
+                                        </td>
+                                        <td class="txt-table-c3">
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <!-- button lưu -->
+                        <div id="hidden-luu-5">
+                            <button type="submit" id="btn-luuform" class="btn-luuform" formaction="/capnhatthongtin/edit" formmethod="POST">Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+        <% include footer%>
+            <script type="text/javascript">
+                $(document).ready(function() {
+
+                    //table password
+                    $("#btn-change-pass").click(function() {
+                        $("#hidden-pass-4").slideDown(50)
+
+                        $("#hidden-name-2").hide()
+                        $("#hidden-phone-3").hide()
+                        $('#btn-luuform').hide()
+                        $("#btn-change-name").show()
+                        $("#btn-change-phone").show()
+                        $("#txt-c2-name").show()
+                        $("#txt-c2-phone").show()
+                        $("#table-change-2").css("background-color", "white")
+                        $("#table-change-3").css("background-color", "white")
+
+                        $("#txt-c2-pass").hide()
+                        $("#btn-change-pass").hide()
+                        $("#hidden-pass-4").css("background-color", "#f5f6f7")
+                        $("#table-change-4").css("background-color", "#f5f6f7")
+
+                        $("#password").val("")
+                        $("#re_password").val("")
+
+                    });
+
+                    $("#pass-btn-huy").click(function() {
+                        $("#btn-change-pass").show()
+                        $("#table-change-4").css("background-color", "white")
+                        $("#txt-c2-pass").show()
+                        $("#hidden-pass-4").hide()
+                        $('#btn-luuform').show()
+                    });
+
+                    //Button luu form
+                    // $('#btn-luuform').click(function() {
+                    //     var checkPass = document.getElementById("re_password").value;
+                    //     var pass = document.getElementById("txt-c2-pass").value;
+                    //     var checkPass = document.getElementById("re_password").value;
+                    //     var pass = document.getElementById("txt-c2-pass").value;
+                    //     var checkPass = document.getElementById("re_password").value;
+                    //     var pass = document.getElementById("txt-c2-pass").value;
+                    //     if (checkPass != pass) {
+                    //         alert("Thay đổi pass thành công");
+                    //     }
+                    // });
+
+                    //button Lưu pass
+
+                    // $('#pass-btn-luu').click(function() {
+                    //     var checkPass = document.getElementById("re_password").value;
+                    //     var pass = document.getElementById("txt-c2-pass").value;
+                    //     if (checkPass != pass) {
+                    //         alert("Thay đổi pass thành công");
+                    //     }
+                    // });
+                });
+                //check password
+                var password = document.getElementById("password"),
+                    re_password = document.getElementById("re_password");
+
+                function validatePassword() {
+                    if (password.value != re_password.value) {
+                        re_password.setCustomValidity("không trùng mật khẩu");
+                    } else {
+                        re_password.setCustomValidity('');
+                    }
+                }
+                password.onchange = validatePassword;
+                re_password.onkeyup = validatePassword;
+            </script>
+
+</body>
+
+</html>
